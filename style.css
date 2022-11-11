@@ -27,6 +27,11 @@ body {
 	background-color: var(--main-color);
 }
 
+.sidebar-item {
+	color: white;
+	font-size: 1.3rem;
+}
+
 .header {
 	grid-area: header;
 	background-color: var(--neutral-white);
