@@ -4,6 +4,7 @@
 	--light-gray: #cbd5e1;
 	--neutral-white: #f5f5f5;
 	--transparent-contrast-gray: rgba(148, 163, 184, .5);
+	--fast-transition: all 0.15s ease-out;
 }
 
 body {
@@ -22,20 +23,88 @@ body {
 		"sidebar content";
 }
 
-.sidebar {
-	grid-area: sidebar;
-	background-color: var(--main-color);
-}
-
-.sidebar-item {
-	color: white;
-	font-size: 1.3rem;
-}
-
 .header {
 	grid-area: header;
 	background-color: var(--neutral-white);
 	border-bottom: 3px solid var(--transparent-contrast-gray);
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 80px 120px;
+	grid-template-areas:
+		"searchbar profile-toolbar"
+		"greeting button-toolbar"
+}
+
+.searchbar {
+
+}
+
+.profile-toolbar {
+	display: flex;
+}
+
+.profile-toolbar-image {
+  	background-image: url(/assets/profile-picture.jpg);
+	width: 60px;
+	height: 60px;
+	background-size: cover;
+	border-radius: 50%;
+}
+
+.greeting {
+	display: flex;
+}
+
+.greeting-image {
+	background-image: url(/assets/profile-picture.jpg);
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	border-radius: 50%;
+}
+
+.sidebar {
+	grid-area: sidebar;
+	background-color: var(--main-color);
+	padding-top: 10px;
+}
+
+nav > div {
+	margin-left: 30px;
+}
+
+.sidebar-item {
+	color: var(--neutral-white);
+	font-size: 1.5rem;
+	transition: var(--fast-transition);
+}
+
+.sidebar-item:hover {
+	transform: scale(1.1);
+}
+
+.sidebar-item > a {
+	text-decoration: none;
+	color: var(--neutral-white);
+}
+
+.sidebar-header > .sidebar-item {
+	font-size: 2.5rem;
+	margin-left: -15px;
+	margin-bottom: 4rem;
+}
+
+.sidebar-main {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	margin-bottom: 4rem;
+}
+
+.sidebar-footer {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
 }
 
 .content {
