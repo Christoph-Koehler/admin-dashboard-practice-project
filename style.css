@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'Roboto'; /*a name to be used later*/
+    src: url("assets/Roboto-Light.ttf"); /*URL to font*/
+}
+
 * {
 	--main-color: #4f46e5;
+	--highlight-color: #fb923c;
 	--contrast-gray: #94a3b8;
+	--darker-contrast-gray: #64748b;
 	--light-gray: #cbd5e1;
 	--neutral-white: #f5f5f5;
 	--transparent-contrast-gray: rgba(148, 163, 184, .5);
@@ -10,6 +17,7 @@
 body {
 	margin: 0px;
 	padding: 0px;
+	font-family: Roboto;
 }
 
 .layout {
@@ -17,7 +25,7 @@ body {
 	height: 100vh;
 	display: grid;
 	grid-template-columns: 300px 1fr;
-	grid-template-rows: 200px 1fr;
+	grid-template-rows: min(200px, 25%) 1fr;
 	grid-template-areas:
 		"sidebar header"
 		"sidebar content";
@@ -25,48 +33,118 @@ body {
 
 .header {
 	grid-area: header;
+	font-size: 1.2rem;
+	font-weight: bolder;
 	background-color: var(--neutral-white);
 	border-bottom: 3px solid var(--transparent-contrast-gray);
+	padding: 1rem;
 	display: grid;
+	gap: 0.5rem;
 	grid-template-columns: 2fr 1fr;
-	grid-template-rows: 80px 120px;
+	grid-template-rows: auto 1fr;
 	grid-template-areas:
 		"searchbar profile-toolbar"
 		"greeting button-toolbar"
 }
 
-.searchbar {
+.header .mdi {
+	font-size: 1.5rem;
+}
 
+input {
+	border: none;
+	border-radius: 20px;
+	background-color: var(--transparent-contrast-gray);
+}
+
+.searchbar {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-items: start;
+}
+
+.searchfield {
+	flex-grow: 1;
+	padding: 0.5rem;
+	justify-self: stretch;
+}
+
+.searchfield:focus-visible {
+	outline-color: var(--main-color);
 }
 
 .profile-toolbar {
 	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 1rem;
 }
 
 .profile-toolbar-image {
   	background-image: url(/assets/profile-picture.jpg);
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	background-size: cover;
 	border-radius: 50%;
+}
+
+.interactable-icon {
+	transition: var(--fast-transition);
+}
+
+.interactable-icon:hover {
+	transform: scale(1.1);
+	cursor: pointer;
 }
 
 .greeting {
 	display: flex;
+	align-items: center;
+	justify-content: start;
+	gap: 1rem;
 }
 
 .greeting-image {
 	background-image: url(/assets/profile-picture.jpg);
-	width: 100px;
-	height: 100px;
+	width: 70px;
+	height: 70px;
 	background-size: cover;
 	border-radius: 50%;
+}
+
+.greeting-first-line {
+	font-size: 1rem;
+	margin-bottom: 8px;
+}
+
+.greeting-second-line {
+	margin-top: 8px;
+}
+
+.button-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 1rem;
+}
+
+.button-toolbar > button {
+	outline: none;
+	border: none;
+	border-radius: 20px;
+	background-color: var(--main-color);
+	color: var(--neutral-white);
+	width: 6rem;
+	height: 2rem;
+	font-weight: bold;
 }
 
 .sidebar {
 	grid-area: sidebar;
 	background-color: var(--main-color);
 	padding-top: 10px;
+	font-weight: bold;
 }
 
 nav > div {
@@ -77,6 +155,7 @@ nav > div {
 	color: var(--neutral-white);
 	font-size: 1.5rem;
 	transition: var(--fast-transition);
+	cursor: pointer;
 }
 
 .sidebar-item:hover {
@@ -107,7 +186,68 @@ nav > div {
 	gap: 1rem;
 }
 
-.content {
+main {
 	grid-area: content;
 	background-color: var(--light-gray);
+	display: grid;
+	grid-template: 1fr / 2fr 1fr;
+	grid-template-areas: "main aside";
+	font-weight: bolder;
+	font-size: 1.3rem;
+}
+
+section {
+	grid-area: main;
+	display: grid;
+	gap: 0.5rem;
+	grid-template: auto 1fr / 1fr;
+	grid-template-areas:
+		"heading"
+		"projects"
+}
+
+.projects-grid {
+	display: grid;
+}
+
+.project-panel {
+	border: 1px solid;
+	border-radius: 8px;
+	display: flex;
+	gap: 1rem;
+	padding-right: 2rem;
+	background-color: var(--neutral-white);
+}
+
+.project-panel-highlight-bar {
+	width: 8px;
+	border-radius: 8px 0 0 8px;
+	background-color: var(--highlight-color);
+}
+
+.project-panel-content {
+	flex: 1;
+}
+
+.project-panel-text {
+	font-weight: lighter;
+	font-size: 1rem;
+	color: var(--darker-contrast-gray)
+}
+
+.project-panel-button-bar {
+	display: flex;
+	justify-content: end;
+	gap: 1.5rem;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+aside {
+	grid-area: aside;
+	display: grid;
+	grid-template: auto 1fr auto 1fr / 1fr;
+	grid-template-areas:
+		"heading"
+		"asside-content"
 }
