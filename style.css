@@ -89,7 +89,7 @@ input {
 }
 
 .profile-image-own {
-	background-image: url(/assets/profile-picture.jpg);
+	background-image: url(assets/profile-picture.jpg);
 }
 
 .interactable-icon {
@@ -109,7 +109,7 @@ input {
 }
 
 .greeting-image {
-	background-image: url(/assets/profile-picture.jpg);
+	background-image: url(assets/profile-picture.jpg);
 	width: 70px;
 	height: 70px;
 	background-size: cover;
@@ -329,13 +329,13 @@ aside {
 }
 
 .avatar-image1 {
-	background-image: url(/assets/avatar1.svg);
+	background-image: url(assets/avatar1.svg);
 }
 
 .avatar-image2 {
-	background-image: url(/assets/avatar2.svg);
+	background-image: url(assets/avatar2.svg);
 }
 
 .avatar-image3 {
-	background-image: url(/assets/avatar3.svg);
+	background-image: url(assets/avatar3.svg);
 }
